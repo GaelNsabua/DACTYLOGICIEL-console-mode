@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1717358900 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.c
+	"view.h"
+	"ansi_settings.h"
+	<time.h>
+
+1717358158 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"view.h"
+	"model.h"
+	"controller.h"
+
+1717254366 c:\users\gael nsabua\documents\c program\udbl-dactylo\view.h
+
+1717279118 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\model.c
+	<stdio.h>
+
+1717357046 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\view.c
+	"ansi_settings.h"
+	"controller.h"
+
+1717270941 c:\users\gael nsabua\documents\c program\udbl-dactylo\ansi_settings.h
+
+1717278166 c:\users\gael nsabua\documents\c program\udbl-dactylo\model.h
+
+1717342210 c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.h
+
