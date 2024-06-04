@@ -10,7 +10,7 @@ void lancement(){
     //center_text("==================");
     center_text("1. MUKALA NSABUA GAEL\t3. MUJINGA NDAYA MIRADIE\n");
     center_text("2. MUKAS KASONG CHRISTELLA\t4. MUJINGA WA NGOIE ANITA\n");
-    sleep(10);
+    sleep(5);
     system("cls");
     menu();
 }

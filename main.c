@@ -8,6 +8,6 @@
 int main()
 {
     //lancement();
-    game();
+    ask_for_players_name();
     return 0;
 }
