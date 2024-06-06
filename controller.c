@@ -7,7 +7,7 @@
 
 
 typedef struct {
-    char *nom_joueur[24];
+    char nom_joueur[24];
     double temps_mis;
     int vitesse;  //WORD PER MINUTE
 } JOUEUR; //LA STRUCTURE QUI REPRESENTE UN JOUEUR
@@ -31,15 +31,28 @@ void ask_for_players_name(){
 
     center_text("Entrez le nom du second joueur : ");
     scanf("%s", joueur2.nom_joueur);
+
     joueur2.temps_mis = 0;
     joueur2.vitesse = 0;
 
+    main_control();
+
+}
+
+//FONCTION DE CONTROL PRINCIPAL
+void main_control(){
+
     int status = 0;
     int taille_tableau = nb_word_choice();
+
+    if(ask_ready_to_start(joueur1.nom_joueur))
     main_game(joueur1, status, taille_tableau);
-    sleep(3);
+    sleep(5);
+
+    if(ask_ready_to_start(joueur2.nom_joueur))
     status = 1;
     main_game(joueur2, status, taille_tableau);
+
 }
 
 //FONCTION QUI PERMET DE RECUPERER LES MOT A PARTIR D'UN FICHIER ET DE LES REMPLIR DE LE TABLEAU PREVU A CETTE EFFET
@@ -74,6 +87,7 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
     sleep(1);
 
     int index;
+    JOUEUR* joueur_data = (JOUEUR*)malloc((sizeof(JOUEUR))*2); //TABLEAU CONTENANT LES JOUEURS
 
     // INITIALISATION DU CHRONOMETRE
     time_t debut = time(NULL);
@@ -82,7 +96,7 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
     for (size_t i = 0; i < taille_tableau; i++)
     {
          index = choose_word_aleatory();
-         
+
         do
         {
             system("cls");
@@ -102,16 +116,15 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
 
     int vitesse = speed_calculation(difftime(fin, debut), taille_tableau);
 
-    JOUEUR joueur_data[2]; //TABLEAU CONTENANT LES JOUEURS
-
     strcpy(joueur_data[status].nom_joueur, joueur->nom_joueur);
     joueur_data[status].vitesse = vitesse;
     joueur_data[status].temps_mis = difftime(fin, debut);
     //LE STATUT NOUS PERMET D'EXECUTER LE CODE CI APRES UNIQUEMENT APRES LE DEUXIEME APPEL DE LA FONCTION MAIN_GAME
     if(status == 1){
-        sleep(3);
-        compare_joueur(joueur_data[0].vitesse, joueur_data[1].vitesse);
+        printf("%d", joueur_data[0].vitesse);
+        sleep(5);
         write_in_file(joueur_data);
+        compare_joueur(joueur_data[0].vitesse, joueur_data[1].vitesse);
     }
 
 }
@@ -132,7 +145,7 @@ int choose_word_aleatory(){
     } while (nb_aleatoire == last_nb); //CONDITION QUI NOUS PERMET DE VERIFIER QUE LE MOT ACTUEL N'EST PAS LE MEME QUE LE PRECEDENT
 
     last_nb =  nb_aleatoire;
-    
+
     return nb_aleatoire;
 
 }
@@ -175,6 +188,8 @@ void write_in_file(JOUEUR joueur_data[]){
         printf("Erreur lors de l'ouverture du fichier.\n");
         return 1;
     }
+
+    int i;
 
     for (size_t i = 0; i < 2; i++)
     {
@@ -222,6 +237,7 @@ void add_word_in_file(){
     }
 
     fclose(fichier);
+    menu();
 
 }
 
@@ -251,6 +267,9 @@ void compare_joueur(int vitesse1, int vitesse2){
         printf("%s\n", joueur2.nom_joueur);
         center_text("ecrivent a la meme vitesse\n");
     }
+
+    sleep(5);
+    restart_game();
 
 }
 

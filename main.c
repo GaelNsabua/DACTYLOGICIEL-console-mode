@@ -7,9 +7,9 @@
 
 int main()
 {
-    //lancement();
+    lancement();
     //ask_for_players_name();
     //add_word_in_file();
-    aide();
+    //aide();
     return 0;
 }

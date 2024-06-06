@@ -77,17 +77,25 @@ void menu(){
 
     switch (option)
     {
-    case 0 :
+    case 0 : //QUITTER LE JEU
+        sleep(1);
         system("cls");
         exit_confirm();
         break;
-    case 1 :
+    case 1 : //DEMARER LE JEU
+        sleep(1);
         system("cls");
         ask_for_players_name();
     break;
-    case 2 :
+    case 2 : //CONFIGURATION
+        sleep(1);
         system("cls");
         add_word_in_file();
+    break;
+    case 3 : //AFFICHER LES INFORMATIONS RELATIVES AU JEU
+        sleep(1);
+        system("cls");
+        aide();
     break;
 
     default:
@@ -141,7 +149,7 @@ void aide(){
     center_text("leur vitesse de frappe au clavier.\n\n");
     center_text("Le jeu consiste en fait a evaluer la vitesse de frappe de deux joueurs\n");
     center_text("et determiner lequel des deux est le plus rapide.\n\n");
-    
+
     center_text(UNDERLINE "\tVERSION\n\n" RESET);
     center_text("Ceci est la version 1.0.1 de UDBL-DACTYLOGICIEL.\n\n");
     center_text("Concu le 06.06.2024\n\n");
@@ -150,12 +158,18 @@ void aide(){
     center_text("MUKALA NSABUA GAEL\n");
     center_text("MUJINGA NDAYA MIRADIE \n");
     center_text("MUKAS KASONG CHRISTELLA\n");
-    center_text("MIJINGA WA NGOIE ANITA\n");
+    center_text("MIJINGA WA NGOIE ANITA\n\n");
+
+    center_text("Ce jeu est encore en developpement donc vos remarques\n");
+    center_text("et conseils constructifs seront les bienvenus\n");
 
     scroll_animation(3);
 
+    return_to_menu();
+
 }
 
+//FONCTION QUI PERMET D'AVOIR UNE ANIMATION DE DEFILEMENT DE L'ECRAN
 void scroll_animation(int n){
 
     int i = 0;
@@ -164,6 +178,96 @@ void scroll_animation(int n){
         sleep(1);
         printf("\n");
         i++;
+    }
+
+}
+
+//FONCTION QUI PERMET AU JOUEUR DE DECIDER QUAND COMMENCER LE JEU
+int ask_ready_to_start(char nom_joueur[]){
+
+    system("cls");
+    center_height();
+    center_text(GREEN "READY TO START JOUEUR" RESET);
+    printf(" %s ?\n\n", nom_joueur);
+    center_text("Etes-vous pret a commencer ?\n\n");
+    center_text("1. OUI    2. ATTENDRE\n\n");
+    center_text("Choisissez une option :: ");
+
+    int choix;
+    scanf("%d", &choix);
+
+    if (choix == 2)
+    {
+        //GESTION DU TEMPS D'ATTENTE
+        int attente;
+        center_text("\n");
+        center_text("Combien de secondes ? :: ");
+        scanf("%d", &attente);
+        //count_time_animation(attente);
+        sleep(attente);
+        return 1;
+
+    } else{
+
+        return 1;
+    }
+
+}
+
+
+void return_to_menu(){
+
+    center_text("Voulez-vous revenir au menu ?\n");
+    center_text("1. OUI    2. NON\n\n");
+    center_text("Choisissez une option :: ");
+
+    int choix;
+    scanf("%d", &choix);
+
+    if (choix == 2)
+    {
+        return;
+    } else{
+        system("cls");
+        menu();
+    }
+
+}
+
+void count_time_animation(int n){
+
+    int i = 0;
+
+    while (i <= n)
+    {
+        system("cls");
+        center_height();
+        center_text(i);
+        sleep(1);
+    }
+
+}
+
+//FONCTION QUI PERMET AUX JOUEUR DE REJOUER UNE PARTIE
+void restart_game(){
+
+    system("cls");
+    center_height();
+    center_text(BOLD BLUE CLIGNOTANT"\t\tUDBL-"RED"DACTYLOGICIEL"RESET"\n\n");
+    center_text("Voulez-vous rejouer une partie ?\n\n");
+    center_text("1. OUI    2. NON\n\n");
+    center_text("Choisissez une option :: ");
+
+    int choix;
+    scanf("%d", &choix);
+
+    if (choix == 2)
+    {
+        return;
+
+    } else{
+        system("cls");
+        main_control();
     }
 
 }
