@@ -8,6 +8,8 @@
 int main()
 {
     //lancement();
-    ask_for_players_name();
+    //ask_for_players_name();
+    //add_word_in_file();
+    aide();
     return 0;
 }
