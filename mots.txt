@@ -1,6 +1,4 @@
 LOTION
-BOL
-JUS
 MARMITE
 NATURE
 ordinateur
@@ -21,6 +19,9 @@ processeur
 document
 commentaires
 electromagnetique
+PERcepTION
+TELEVISION
+REDACTEUR
 chat
 chien
 livre
@@ -61,3 +62,4 @@ sel
 air
 mur
 dos
+
