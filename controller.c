@@ -2,21 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "view.h"
+#include "model.h"
 #include "ansi_settings.h"
-#define MAX_MOTS 40
+#include "global_variables.h"
 
-
-typedef struct {
-    char* nom_joueur[24];
-    double temps_mis;
-    int vitesse;  //WORD PER MINUTE
-} JOUEUR; //LA STRUCTURE QUI REPRESENTE UN JOUEUR
-
-JOUEUR joueur1;
-JOUEUR joueur2;
-
-char mots[MAX_MOTS][50]; // TABLEAU QUI VA STOCKER LES MOTS A SAISIR. CHAQUE PEUT AVOIR AU MAXIMUM 50 CARACTERES
-char mot_joueur[100]; //VARIABLE QUI VA CONTENIR LE MOT SAISI PAR L'UTILISATEUR
 
 //FONCTION QUI PERMET DE RECUPERER LES NOMS DES JOUEURS ET D'APPELER LE RESTE DES FONCTION
 void ask_for_players_name(){
@@ -25,15 +14,14 @@ void ask_for_players_name(){
 
     center_text(CYAN "\t\tPRET A TESTER VOTRE RAPIDITE\n\n\n" RESET);
     center_text("Entrez le nom du premier joueur : ");
-    scanf("%s", joueur1.nom_joueur);
-    joueur1.temps_mis = 0;
-    joueur1.vitesse = 0;
+    scanf("%s", joueur_data[0].nom_joueur);
+    joueur_data[0].temps_mis = 0;
+    joueur_data[0].vitesse = 0;
 
     center_text("Entrez le nom du second joueur : ");
-    scanf("%s", joueur2.nom_joueur);
-
-    joueur2.temps_mis = 0;
-    joueur2.vitesse = 0;
+    scanf("%s", joueur_data[1].nom_joueur);
+    joueur_data[1].temps_mis = 0;
+    joueur_data[1].vitesse = 0;
     
     main_control();
 
@@ -45,40 +33,20 @@ void main_control(){
     int status = 0;
     int taille_tableau = nb_word_choice();
 
-    main_game(joueur1, status, taille_tableau);
+    main_game(status, taille_tableau);
     sleep(5);
 
     status = 1;
-    main_game(joueur2, status, taille_tableau);
+    main_game(status, taille_tableau);
     
 }
 
-//FONCTION QUI PERMET DE RECUPERER LES MOT A PARTIR D'UN FICHIER ET DE LES REMPLIR DE LE TABLEAU PREVU A CETTE EFFET
-void get_mots_from_file(){
 
-    FILE* fichier = fopen("mots.txt", "r");
+void main_game(int status, int taille_tableau){
 
-    if (fichier == NULL) {
-        printf("Erreur lors de l'ouverture du fichier.\n");
-        return 1;
-    }
+    int index_joueur = status;
 
-    int nombreDeMots = 0;
-
-    // Lire les mots depuis le fichier
-    while (nombreDeMots < MAX_MOTS && fgets(mots[nombreDeMots], sizeof(mots[nombreDeMots]), fichier) != NULL) {
-        // Supprimer le saut de ligne à la fin du mot (si présent)
-        mots[nombreDeMots][strcspn(mots[nombreDeMots], "\n")] = '\0';
-        nombreDeMots++;
-    }
-
-    fclose(fichier);
-}
-
-
-void main_game(JOUEUR* joueur, int status, int taille_tableau){
-
-    ask_ready_to_start(joueur->nom_joueur); //AVANT DE LANCER LE CHRONO, ON S'ASSURE QUE LE JOUEUR EST PRET
+    ask_ready_to_start(joueur_data[index_joueur]); //AVANT DE LANCER LE CHRONO, ON S'ASSURE QUE LE JOUEUR EST PRET
 
     srand(time(NULL)); //INITIALISATION DE LA FONCTION QUI NOUS PERMET DE GENERER DES MOTS ALEATOIREMENT
 
@@ -100,7 +68,7 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
         {
             system("cls");
 
-            show_player_name(joueur->nom_joueur);
+            show_player_name(joueur_data[index_joueur].nom_joueur);
 
             suggest_get_user_word(mots[index]);
 
@@ -115,10 +83,7 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
 
     int vitesse = speed_calculation(difftime(fin, debut), taille_tableau);
 
-    JOUEUR joueur_data[2]; //TABLEAU CONTENANT LES JOUEURS
-    int index_joueur = status;
     //ON REMPLIT LE TABLEAU AVEC LES INFORMATIONS DU JOUEUR A L'INDICE INDIQUE PAR LE STATUT
-    strcpy(joueur_data[index_joueur].nom_joueur, joueur->nom_joueur);
     joueur_data[index_joueur].vitesse = vitesse;
     joueur_data[index_joueur].temps_mis = difftime(fin, debut);
 
@@ -181,69 +146,6 @@ int speed_calculation(double tempsEcoule, int nb_mot){
 }
 
 
-
-void write_in_file(JOUEUR joueur_data[]){
-
-    FILE* fichier = fopen("joueurs.csv", "a+");
-
-        if (fichier == NULL) {
-        printf("Erreur lors de l'ouverture du fichier.\n");
-        return 1;
-    }
-
-    int i;
-
-    for (size_t i = 0; i < 2; i++)
-    {
-        fprintf(fichier, "%s,%.0f,%d\n", joueur_data[i].nom_joueur, joueur_data[i].temps_mis , joueur_data[i].vitesse);
-    }
-
-    fclose(fichier);
-}
-
-
-void add_word_in_file(){
-
-    char new_word[100];
-    int nb_new_word;
-
-    FILE* fichier = fopen("mots.txt", "a+");
-
-        if (fichier == NULL) {
-        printf("Erreur lors de l'ouverture du fichier.\n");
-        return 1;
-    }
-
-    center_height();
-    center_text(CYAN "\t\tAJOUT DE NOUVEAUX" GREEN " MOTS\n\n\n" RESET);
-    center_text("Combien de mots voulez-vous ajouter :: ");
-    scanf("%d", &nb_new_word);
-
-    int i = 1;
-
-    while (i <= nb_new_word )
-    {
-        system("cls");
-        center_height();
-        center_text(CYAN "\t\tAJOUT DE NOUVEAUX" GREEN " MOTS\n\n\n" RESET);
-        center_text("SAISISSEZ LE NOUVEAU MOT :: ");
-        scanf("%s", new_word);
-
-        fprintf(fichier, "%s\n", new_word);
-
-        center_text("\n\n");
-        center_text(GREEN "\tMot ajoute avec succes" RESET);
-        sleep(2);
-        i++;
-
-    }
-
-    fclose(fichier);
-    menu();
-
-}
-
-
 //FONCTION QUI PERMET DE DETERMINER LEQUEL DES JOUEURS EST LE PLUS RAPIDE SUR BASE DE LA VITESSE
 void compare_joueur(int vitesse1, int vitesse2){
 
@@ -253,20 +155,22 @@ void compare_joueur(int vitesse1, int vitesse2){
 
     if(vitesse1 > vitesse2){
         center_text("le joueur ");
-        printf("%s\n", joueur1.nom_joueur);
+        printf("%s\n", joueur_data[0].nom_joueur);
         center_text("est plus rapide que le joueur ");
-        printf("%s\n", joueur2.nom_joueur);
+        printf("%s\n", joueur_data[1].nom_joueur);
+
     } else if (vitesse2 > vitesse1)
     {
         center_text("le joueur ");
-        printf("%s\n", joueur2.nom_joueur);
+        printf("%s\n", joueur_data[1].nom_joueur);
         center_text("est plus rapide que le joueur ");
-        printf("%s\n", joueur1.nom_joueur);
+        printf("%s\n", joueur_data[0].nom_joueur);
+
     } else {
+        center_text("le joueur et");
+        printf("%s\n", joueur_data[0].nom_joueur);
         center_text("le joueur ");
-        printf("%s\n", joueur1.nom_joueur);
-        center_text("et le joueur ");
-        printf("%s\n", joueur2.nom_joueur);
+        printf("%s\n", joueur_data[1].nom_joueur);
         center_text("ecrivent a la meme vitesse\n");
     }
 

@@ -4,6 +4,7 @@
 #include "view.h"
 #include "model.h"
 #include "controller.h"
+#include "global_variables.h"
 
 int main()
 {
