@@ -1,20 +1,31 @@
 # depslib dependency file v1.0
-<<<<<<< HEAD
-1717713292 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.c
-=======
-1717746601 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.c
->>>>>>> version_3
+140736677597610 <<<<<<< HEAD
+
+1717779794 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	"view.h"
 	"ansi_settings.h"
 
-<<<<<<< HEAD
-1717713292 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
-=======
-1717759556 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
->>>>>>> version_3
+1717755497 sion_3
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"view.h"
+	"ansi_settings.h"
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	"view.h"
+	"model.h"
+	"controller.h"
+	"ansi_settings.h"
+	"controller.h"
+
+1717279118 D
+
+1717779794 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
@@ -27,11 +38,7 @@
 1717279118 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\model.c
 	<stdio.h>
 
-<<<<<<< HEAD
-1717713292 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\view.c
-=======
-1717755497 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\view.c
->>>>>>> version_3
+1717779794 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\view.c
 	"ansi_settings.h"
 	"controller.h"
 

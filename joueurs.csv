@@ -1,15 +1,12 @@
 <<<<<<< HEAD
-"Nom,Age,Score"
-
-
-NH,11,10
-KL,10,12
 =======
-nom    ,temps ,vitesse
-GAEL   ,   39 ,     15
-EMMANU ,   47 ,     12
-JOEL   ,   34 ,      8
-SAMY   ,   20 ,     15
-JOEL   ,   27 ,      8
-SAMY   ,   15 ,     16
+nom               ,temps ,vitesse
+GAEL              ,39    ,15
+EMMANU            ,47    ,12
+JOEL              ,34    ,8
+SAMY              ,20    ,15
+JOEL              ,27    ,8
+SAMY              ,15    ,16
 >>>>>>> version_3
+MANASSE           ,27    ,11
+GAEL              ,30    ,10
