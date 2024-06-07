@@ -7,7 +7,7 @@
 
 
 typedef struct {
-    char nom_joueur[24];
+    char* nom_joueur[24];
     double temps_mis;
     int vitesse;  //WORD PER MINUTE
 } JOUEUR; //LA STRUCTURE QUI REPRESENTE UN JOUEUR
@@ -34,7 +34,7 @@ void ask_for_players_name(){
 
     joueur2.temps_mis = 0;
     joueur2.vitesse = 0;
-
+    
     main_control();
 
 }
@@ -45,14 +45,12 @@ void main_control(){
     int status = 0;
     int taille_tableau = nb_word_choice();
 
-    if(ask_ready_to_start(joueur1.nom_joueur))
     main_game(joueur1, status, taille_tableau);
     sleep(5);
 
-    if(ask_ready_to_start(joueur2.nom_joueur))
     status = 1;
     main_game(joueur2, status, taille_tableau);
-
+    
 }
 
 //FONCTION QUI PERMET DE RECUPERER LES MOT A PARTIR D'UN FICHIER ET DE LES REMPLIR DE LE TABLEAU PREVU A CETTE EFFET
@@ -80,6 +78,8 @@ void get_mots_from_file(){
 
 void main_game(JOUEUR* joueur, int status, int taille_tableau){
 
+    ask_ready_to_start(joueur->nom_joueur); //AVANT DE LANCER LE CHRONO, ON S'ASSURE QUE LE JOUEUR EST PRET
+
     srand(time(NULL)); //INITIALISATION DE LA FONCTION QUI NOUS PERMET DE GENERER DES MOTS ALEATOIREMENT
 
     get_mots_from_file();
@@ -87,7 +87,6 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
     sleep(1);
 
     int index;
-    JOUEUR* joueur_data = (JOUEUR*)malloc((sizeof(JOUEUR))*2); //TABLEAU CONTENANT LES JOUEURS
 
     // INITIALISATION DU CHRONOMETRE
     time_t debut = time(NULL);
@@ -116,14 +115,17 @@ void main_game(JOUEUR* joueur, int status, int taille_tableau){
 
     int vitesse = speed_calculation(difftime(fin, debut), taille_tableau);
 
-    strcpy(joueur_data[status].nom_joueur, joueur->nom_joueur);
-    joueur_data[status].vitesse = vitesse;
-    joueur_data[status].temps_mis = difftime(fin, debut);
+    JOUEUR joueur_data[2]; //TABLEAU CONTENANT LES JOUEURS
+    int index_joueur = status;
+    //ON REMPLIT LE TABLEAU AVEC LES INFORMATIONS DU JOUEUR A L'INDICE INDIQUE PAR LE STATUT
+    strcpy(joueur_data[index_joueur].nom_joueur, joueur->nom_joueur);
+    joueur_data[index_joueur].vitesse = vitesse;
+    joueur_data[index_joueur].temps_mis = difftime(fin, debut);
+
     //LE STATUT NOUS PERMET D'EXECUTER LE CODE CI APRES UNIQUEMENT APRES LE DEUXIEME APPEL DE LA FONCTION MAIN_GAME
     if(status == 1){
-        printf("%d", joueur_data[0].vitesse);
         sleep(5);
-        write_in_file(joueur_data);
+        write_in_file(joueur_data); //ON SAUVEGARDE LES INFORMATIONS DU JOUEUR DANS UN FICHIER
         compare_joueur(joueur_data[0].vitesse, joueur_data[1].vitesse);
     }
 

@@ -87,7 +87,7 @@ void menu(){
         system("cls");
         ask_for_players_name();
     break;
-    case 2 : //CONFIGURATION
+    case 2 : //CONFIGURATION ON PERMET AUX UTILISATEURS D'AJOUTER DES MOTS POUR PERSONNALISER LE JEU
         sleep(1);
         system("cls");
         add_word_in_file();
@@ -183,12 +183,12 @@ void scroll_animation(int n){
 }
 
 //FONCTION QUI PERMET AU JOUEUR DE DECIDER QUAND COMMENCER LE JEU
-int ask_ready_to_start(char nom_joueur[]){
+int ask_ready_to_start(char* nomjoueur){
 
     system("cls");
     center_height();
     center_text(GREEN "READY TO START JOUEUR" RESET);
-    printf(" %s ?\n\n", nom_joueur);
+    printf(" %s ?\n\n", nomjoueur);
     center_text("Etes-vous pret a commencer ?\n\n");
     center_text("1. OUI    2. ATTENDRE\n\n");
     center_text("Choisissez une option :: ");
@@ -244,6 +244,7 @@ void count_time_animation(int n){
         center_height();
         center_text(i);
         sleep(1);
+        i++;
     }
 
 }
