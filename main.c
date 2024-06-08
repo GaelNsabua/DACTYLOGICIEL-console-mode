@@ -9,9 +9,5 @@
 int main()
 {
     lancement();
-    //ask_for_players_name();
-    //add_word_in_file();
-    //aide();
-    //menu();
     return 0;
 }
