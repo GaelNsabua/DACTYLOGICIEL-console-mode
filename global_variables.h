@@ -1,4 +1,4 @@
-#define MAX_MOTS 40
+#define MAX_MOTS 50
 
 typedef struct {
     char* nom_joueur[24];

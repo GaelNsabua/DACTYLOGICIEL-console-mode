@@ -33,12 +33,11 @@ void main_control(){
     int status = 0;
     int taille_tableau = nb_word_choice();
 
-    main_game(status, taille_tableau);
-    sleep(5);
+    for(status = 0; status < 2; status++){
+        main_game(status, taille_tableau);
+        sleep(5);
+    }
 
-    status = 1;
-    main_game(status, taille_tableau);
-    
 }
 
 
@@ -72,6 +71,13 @@ void main_game(int status, int taille_tableau){
 
             suggest_get_user_word(mots[index]);
 
+            if (strcmp(mot_joueur,mots[index]) != 0){
+
+                center_text("\n\n");
+                center_text(RED "\tMot incorrect !\n"RESET);
+                sleep(1);
+            }
+
         } while (strcmp(mot_joueur,mots[index]) != 0);
 
             correct_message();
@@ -101,13 +107,13 @@ void main_game(int status, int taille_tableau){
 int choose_word_aleatory(){
 
     int nb_max =  MAX_MOTS;
-    int nb_min = 1;
+    int nb_min = 0;
     int nb_aleatoire;
     static int last_nb; //VARIABLE QUI NOUS PERMET DE NE PAS REPETER LE MEME MOT SUCCESSIVEMENT
 
     do
     {
-        nb_aleatoire = rand() % (nb_max-1) + nb_min;
+        nb_aleatoire = rand() % (nb_max-1) + nb_min; 
 
     } while (nb_aleatoire == last_nb); //CONDITION QUI NOUS PERMET DE VERIFIER QUE LE MOT ACTUEL N'EST PAS LE MEME QUE LE PRECEDENT
 
@@ -134,12 +140,12 @@ int speed_calculation(double tempsEcoule, int nb_mot){
     double minutes = tempsEcoule / 60; // Conversion en minutes
     int secondes = (int)tempsEcoule % 60; // Récupération des secondes
 
-    center_text(BLUE "Temps ecoule : " RESET);
-    printf("%.0f minutes et %d secondes\n", minutes, secondes);
+    center_text(CYAN "Temps ecoule : " RESET);
+    printf("%.0f min et %d sec\n", minutes, secondes);
 
-    int vitesse = (nb_mot * 60.0) / tempsEcoule;
+    int vitesse = (nb_mot * 60.0) / tempsEcoule; //MOT PAR MINUTE
 
-    center_text("Vitesse de frappe : ");
+    center_text(CYAN "Vitesse de frappe : " RESET);
     printf(" %d MPM\n", vitesse);
 
     return vitesse;

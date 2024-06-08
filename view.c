@@ -4,10 +4,9 @@
 //FONCTION QUI AFFICHE DES ELEMENTS A L'ECRAN AU LANCEMENT
 void lancement(){
     center_height();
-    center_text(BOLD BLUE CLIGNOTANT"\t\tUDBL-"RED"DACTYLOGICIEL"RESET"\n\n\n");
+    center_text(BOLD BLUE"\t\tUDBL-"RED"DACTYLOGICIEL"RESET"\n\n\n");
     sleep(3); //LE PROGRAMME ATTENT 3 SECONDES AVANT D'EXECUTER LE RESTE D'INSTRUCTONs
     center_text(CYAN UNDERLINE"\tMEMBRES DE L'EQUIPE\n\n"RESET);
-    //center_text("==================");
     center_text("1. MUKALA NSABUA GAEL\t3. MUJINGA NDAYA MIRADIE\n");
     center_text("2. MUKAS KASONG CHRISTELLA\t4. MUJINGA WA NGOIE ANITA\n");
     sleep(5);

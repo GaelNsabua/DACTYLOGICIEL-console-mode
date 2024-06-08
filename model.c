@@ -73,7 +73,7 @@ void add_word_in_file(){
         center_text("SAISISSEZ LE NOUVEAU MOT :: ");
         scanf("%s", new_word);
 
-        fprintf(fichier, "%s\n", new_word);
+        fprintf(fichier, "%s\n", new_word);//AJOUTE LE MOT DANS LE FICHIER
 
         center_text("\n\n");
         center_text(GREEN "\tMot ajoute avec succes" RESET);
