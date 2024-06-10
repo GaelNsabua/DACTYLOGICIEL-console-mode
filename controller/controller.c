@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "view.h"
-#include "model.h"
-#include "ansi_settings.h"
-#include "global_variables.h"
+#include "../view/view.h"
+#include "../model/model.h"
+#include "../setup/ansi_settings.h"
+#include "../setup/global_variables.h"
 
 
 //FONCTION QUI PERMET DE RECUPERER LES NOMS DES JOUEURS ET D'APPELER LE RESTE DES FONCTION

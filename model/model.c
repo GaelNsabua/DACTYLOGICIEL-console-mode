@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "global_variables.h"
-#include "ansi_settings.h"
+#include "../setup/global_variables.h"
+#include "../setup/ansi_settings.h"
 
 //FONCTION QUI PERMET DE RECUPERER LES MOT A PARTIR D'UN FICHIER ET DE LES REMPLIR DE LE TABLEAU PREVU A CETTE EFFET
 void get_mots_from_file(){

@@ -41,14 +41,14 @@
 
 1717279118 D
 
-1717783485 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
+1717969451 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
-	"view.h"
-	"model.h"
-	"controller.h"
-	"global_variables.h"
+	"view/view.h"
+	"model/model.h"
+	"controller/controller.h"
+	"setup/global_variables.h"
 
 1717254366 c:\users\gael nsabua\documents\c program\udbl-dactylo\view.h
 
@@ -69,4 +69,12 @@
 1717342210 c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.h
 
 1717842204 c:\users\gael nsabua\documents\c program\udbl-dactylo\global_variables.h
+
+1717254366 c:\users\gael nsabua\documents\c program\udbl-dactylo\view\view.h
+
+1717783485 c:\users\gael nsabua\documents\c program\udbl-dactylo\model\model.h
+
+1717342210 c:\users\gael nsabua\documents\c program\udbl-dactylo\controller\controller.h
+
+1718004121 c:\users\gael nsabua\documents\c program\udbl-dactylo\setup\global_variables.h
 
