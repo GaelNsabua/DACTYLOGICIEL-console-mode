@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 140736677597610 <<<<<<< HEAD
 
-1717844257 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.c
+1718030544 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -41,7 +41,7 @@
 
 1717279118 D
 
-1717783485 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
+1718022999 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\main.c
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
@@ -50,23 +50,23 @@
 	"controller.h"
 	"global_variables.h"
 
-1717254366 c:\users\gael nsabua\documents\c program\udbl-dactylo\view.h
+1718022988 c:\users\gael nsabua\documents\c program\udbl-dactylo\view.h
 
-1717783485 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\model.c
+1718022988 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\model.c
 	<stdio.h>
 	<stdlib.h>
 	"global_variables.h"
 	"ansi_settings.h"
 
-1717845074 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\view.c
+1718030822 source:c:\users\gael nsabua\documents\c program\udbl-dactylo\view.c
 	"ansi_settings.h"
 	"controller.h"
 
-1717842607 c:\users\gael nsabua\documents\c program\udbl-dactylo\ansi_settings.h
+1718022988 c:\users\gael nsabua\documents\c program\udbl-dactylo\ansi_settings.h
 
-1717783485 c:\users\gael nsabua\documents\c program\udbl-dactylo\model.h
+1718022988 c:\users\gael nsabua\documents\c program\udbl-dactylo\model.h
 
-1717342210 c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.h
+1718022988 c:\users\gael nsabua\documents\c program\udbl-dactylo\controller.h
 
-1717842204 c:\users\gael nsabua\documents\c program\udbl-dactylo\global_variables.h
+1718030680 c:\users\gael nsabua\documents\c program\udbl-dactylo\global_variables.h
 

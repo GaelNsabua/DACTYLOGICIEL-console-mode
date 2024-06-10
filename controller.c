@@ -143,7 +143,7 @@ int speed_calculation(double tempsEcoule, int nb_mot){
     center_text(CYAN "Temps ecoule : " RESET);
     printf("%.0f min et %d sec\n", minutes, secondes);
 
-    int vitesse = (nb_mot * 60.0) / tempsEcoule; //MOT PAR MINUTE
+    int vitesse = (nb_mot * 60) / tempsEcoule; //MOT PAR MINUTE
 
     center_text(CYAN "Vitesse de frappe : " RESET);
     printf(" %d MPM\n", vitesse);
@@ -158,6 +158,20 @@ void compare_joueur(int vitesse1, int vitesse2){
     system("cls");
     center_height();
     center_text(UNDERLINE "\tRAPPORT FINAL\n\n" RESET);
+
+    int i;
+
+    for(i = 0; i < 2; i++){
+
+        center_text(GREEN "JOUEUR ::: " RESET);
+        printf("%s\n", joueur_data[i].nom_joueur);
+        center_text(CYAN "Temps ecoule : " RESET);
+        printf("%d sec\n", joueur_data[i].temps_mis);
+        center_text(CYAN "Vitesse de frappe : " RESET);
+        printf(" %d MPM\n\n", joueur_data[i].vitesse);
+        center_text("==========================================\n\n");
+    }
+    
 
     if(vitesse1 > vitesse2){
         center_text("le joueur ");
@@ -180,7 +194,7 @@ void compare_joueur(int vitesse1, int vitesse2){
         center_text("ecrivent a la meme vitesse\n");
     }
 
-    sleep(5);
+    sleep(10);
     restart_game();
 
 }

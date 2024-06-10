@@ -117,7 +117,7 @@ void show_player_name(char nom_joueur[]){
 void correct_message(){
 
     center_text("\n\n");
-    center_text(GREEN"\tCorrect !\n"RESET);
+    center_text(GREEN"\tCorrect !\n\n"RESET);
     sleep(1);
 }
 
