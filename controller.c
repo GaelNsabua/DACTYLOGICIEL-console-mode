@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../view/view.h"
-#include "../model/model.h"
-#include "../setup/ansi_settings.h"
-#include "../setup/global_variables.h"
+#include "view.h"
+#include "model.h"
+#include "ansi_settings.h"
+#include "global_variables.h"
 
 
 //FONCTION QUI PERMET DE RECUPERER LES NOMS DES JOUEURS ET D'APPELER LE RESTE DES FONCTION
@@ -22,7 +22,7 @@ void ask_for_players_name(){
     scanf("%s", joueur_data[1].nom_joueur);
     joueur_data[1].temps_mis = 0;
     joueur_data[1].vitesse = 0;
-    
+
     main_control();
 
 }
@@ -30,7 +30,7 @@ void ask_for_players_name(){
 //FONCTION DE CONTROL PRINCIPAL
 void main_control(){
 
-    int status = 0;
+    int status;
     int taille_tableau = nb_word_choice();
 
     for(status = 0; status < 2; status++){
@@ -113,7 +113,7 @@ int choose_word_aleatory(){
 
     do
     {
-        nb_aleatoire = rand() % (nb_max-1) + nb_min; 
+        nb_aleatoire = rand() % (nb_max-1) + nb_min;
 
     } while (nb_aleatoire == last_nb); //CONDITION QUI NOUS PERMET DE VERIFIER QUE LE MOT ACTUEL N'EST PAS LE MEME QUE LE PRECEDENT
 
@@ -171,7 +171,7 @@ void compare_joueur(int vitesse1, int vitesse2){
         printf(" %d MPM\n\n", joueur_data[i].vitesse);
         center_text("==========================================\n\n");
     }
-    
+
 
     if(vitesse1 > vitesse2){
         center_text("le joueur ");

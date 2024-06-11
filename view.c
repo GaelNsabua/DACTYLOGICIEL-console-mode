@@ -1,5 +1,5 @@
-#include "../setup/ansi_settings.h"
-#include "../controller/controller.h"
+#include "ansi_settings.h"
+#include "controller.h"
 
 //FONCTION QUI AFFICHE DES ELEMENTS A L'ECRAN AU LANCEMENT
 void lancement(){
