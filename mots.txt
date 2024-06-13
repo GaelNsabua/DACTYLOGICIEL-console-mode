@@ -44,4 +44,6 @@ etudiant
 afrique
 electronique
 statisTIque
-Contemplation
+ContemplationArtificiel
+enigmatique
+antalgique

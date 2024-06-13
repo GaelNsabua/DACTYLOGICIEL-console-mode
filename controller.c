@@ -97,7 +97,7 @@ void main_game(int status, int taille_tableau){
     if(status == 1){
         sleep(5);
         write_in_file(joueur_data); //ON SAUVEGARDE LES INFORMATIONS DU JOUEUR DANS UN FICHIER
-        compare_joueur(joueur_data[0].vitesse, joueur_data[1].vitesse);
+        compare_joueur(joueur_data ,joueur_data[0].vitesse, joueur_data[1].vitesse);
     }
 
 }
@@ -137,7 +137,7 @@ void suggest_get_user_word(char mot[]){
 //FONCTION QUI NOUS PERMET DE CALCULER LA VITESSE (EN MOT PAR MINUTE) DE SAISIE DES JOUEURS ET LE TEMPS MIS (EN MINUTES ET SECONDES)
 int speed_calculation(double tempsEcoule, int nb_mot){
 
-    double minutes = tempsEcoule / 60; // Conversion en minutes
+    int minutes = tempsEcoule / 60; // Conversion en minutes
     int secondes = (int)tempsEcoule % 60; // Récupération des secondes
 
     center_text(CYAN "Temps ecoule : " RESET);
@@ -153,7 +153,7 @@ int speed_calculation(double tempsEcoule, int nb_mot){
 
 
 //FONCTION QUI PERMET DE DETERMINER LEQUEL DES JOUEURS EST LE PLUS RAPIDE SUR BASE DE LA VITESSE
-void compare_joueur(int vitesse1, int vitesse2){
+void compare_joueur(JOUEUR joueur_data[], int vitesse1, int vitesse2){
 
     system("cls");
     center_height();

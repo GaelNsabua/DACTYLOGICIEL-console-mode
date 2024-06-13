@@ -2,7 +2,7 @@
 
 typedef struct {
     char* nom_joueur[24];
-    double temps_mis;
+    int temps_mis;
     int vitesse;  //WORD PER MINUTE
 } JOUEUR; //LA STRUCTURE QUI REPRESENTE UN JOUEUR
 
